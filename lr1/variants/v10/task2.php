@@ -14,4 +14,4 @@ ob_start();
 <?php
 $content = ob_get_clean();
 
-renderVariantLayout($content, 'Завдання 1', 'task1-body');
+renderVariantLayout($content, 'Завдання 1', 'task2-body');
