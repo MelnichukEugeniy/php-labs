@@ -6,7 +6,7 @@
  * вибір мови через GET + cookie, завантаження фото
  */
 session_start();
-require_once __DIR__ . '/layout.php';
+require_once __DIR__ . '/demo/layout.php';
 
 // --- Мова ---
 $languages = [
@@ -27,8 +27,8 @@ if (isset($_GET['lang']) && isset($languages[$_GET['lang']])) {
 
 // --- Міста ---
 $cities = [
-    'Київ', 'Львів', 'Одеса', 'Харків', 'Дніпро', 'Запоріжжя',
-    'Вінниця', 'Полтава', 'Чернігів', 'Тернопіль'
+    'Київ', 'Харків', 'Одеса', 'Дніпро', 'Запоріжжя',
+    'Львів', 'Вінниця', 'Полтава', 'Житомир', 'Черкаси',
 ];
 
 // --- Хобі ---
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($login === '') {
         $errors[] = 'Логін не може бути порожнім';
     }
-    if (mb_strlen($password) < 4) {
+    if (strlen($password) < 4) {
         $errors[] = 'Пароль повинен бути не менше 4 символів';
     }
     if ($password !== $password2) {
@@ -81,7 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
             $newName = uniqid('photo_') . '.' . $ext;
             $uploadDir = __DIR__ . '/uploads/';
-            if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
             $destination = $uploadDir . $newName;
             if (move_uploaded_file($_FILES['photo']['tmp_name'], $destination)) {
                 $photoPath = 'uploads/' . $newName;
@@ -103,6 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['reg_data'] = $regData;
 
     if (empty($errors)) {
+        // Перенаправляємо на сторінку результатів
         header('Location: task10_result.php');
         exit;
     }
@@ -145,11 +148,13 @@ ob_start();
     <?php endif; ?>
 
     <form method="post" enctype="multipart/form-data" class="demo-form" style="text-align: left;">
+        <!-- Логін -->
         <div class="form-group">
             <label for="login">Логін</label>
             <input type="text" id="login" name="login" value="<?= htmlspecialchars($formData['login']) ?>" placeholder="Ваш логін" required>
         </div>
 
+        <!-- Пароль -->
         <div class="form-group">
             <div class="form-row">
                 <div>
@@ -163,43 +168,61 @@ ob_start();
             </div>
         </div>
 
+        <!-- Стать -->
         <div class="form-group">
             <label>Стать</label>
             <div class="radio-group">
-                <label><input type="radio" name="gender" value="male" <?= $formData['gender']==='male'?'checked':'' ?>> Чоловіча</label>
-                <label><input type="radio" name="gender" value="female" <?= $formData['gender']==='female'?'checked':'' ?>> Жіноча</label>
+                <label>
+                    <input type="radio" name="gender" value="male" <?= $formData['gender'] === 'male' ? 'checked' : '' ?>>
+                    Чоловіча
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="female" <?= $formData['gender'] === 'female' ? 'checked' : '' ?>>
+                    Жіноча
+                </label>
             </div>
         </div>
 
+        <!-- Місто -->
         <div class="form-group">
             <label for="city">Місто</label>
             <select id="city" name="city" required>
                 <option value="">-- Оберіть місто --</option>
                 <?php foreach ($cities as $c): ?>
-                <option value="<?= htmlspecialchars($c) ?>" <?= $formData['city']===$c?'selected':'' ?>><?= htmlspecialchars($c) ?></option>
+                <option value="<?= htmlspecialchars($c) ?>" <?= $formData['city'] === $c ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($c) ?>
+                </option>
                 <?php endforeach; ?>
             </select>
         </div>
 
+        <!-- Хобі -->
         <div class="form-group">
             <label>Хобі</label>
             <div class="checkbox-group">
                 <?php foreach ($hobbies as $key => $label): ?>
-                <label><input type="checkbox" name="hobbies[]" value="<?= $key ?>" <?= in_array($key, $formData['hobbies'])?'checked':'' ?>> <?= htmlspecialchars($label) ?></label>
+                <label>
+                    <input type="checkbox" name="hobbies[]" value="<?= $key ?>" <?= in_array($key, $formData['hobbies']) ? 'checked' : '' ?>>
+                    <?= htmlspecialchars($label) ?>
+                </label>
                 <?php endforeach; ?>
             </div>
         </div>
 
+        <!-- Про себе -->
         <div class="form-group">
             <label for="about">Про себе</label>
             <textarea id="about" name="about" rows="3" placeholder="Розкажіть про себе..."><?= htmlspecialchars($formData['about']) ?></textarea>
         </div>
 
+        <!-- Фотографія -->
         <div class="form-group">
             <label for="photo">Фотографія</label>
             <input type="file" id="photo" name="photo" accept="image/*">
-            <?php if (!empty($sessionData['photo']) && file_exists(__DIR__.'/'.$sessionData['photo'])): ?>
-            <p style="font-size: 13px; color: var(--color-text-muted); margin-top: 4px;">Поточне фото збережено в сесії</p>
+            <?php if (!empty($sessionData['photo']) && file_exists(__DIR__ . '/' . $sessionData['photo'])): ?>
+            <p style="font-size: 13px; color: var(--color-text-muted); margin-top: 4px;">
+                Поточне фото збережено в сесії
+            </p>
             <?php endif; ?>
         </div>
 
