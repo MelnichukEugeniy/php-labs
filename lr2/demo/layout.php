@@ -12,7 +12,7 @@
  *   ob_start();
  *   // ... HTML ...
  *   $content = ob_get_clean();
- *   renderDemoLayout($content, $taskName, $bodyClass);
+ *   renderDemoLayout($content, $taskName, $bodyClass); 
  */
 
 require_once dirname(__DIR__, 2) . '/shared/helpers/dev_reload.php';

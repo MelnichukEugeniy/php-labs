@@ -4,11 +4,14 @@
  *
  * Демонстрація: робота з рядками, str_replace
  */
-require_once __DIR__ . '/layout.php';
+require_once __DIR__ . '/demo/layout.php';
 
-/**
- * Замінює всі входження підрядка в тексті
- */
+
+
+$basic_text='Великий кіт сидів на паркані та спостерігав за пташками що літали над садком';
+$basic_find='ав';
+$basic_replace='ив';
+
 function findAndReplace(string $text, string $find, string $replace): string
 {
     if ($find === '') {
@@ -18,15 +21,24 @@ function findAndReplace(string $text, string $find, string $replace): string
 }
 
 // Обробка форми
-$text = $_POST['text'] ?? 'Привіт, світ! Це чудовий світ програмування.';
-$find = $_POST['find'] ?? '';
-$replace = $_POST['replace'] ?? '';
-$result = '';
-$submitted = isset($_POST['text']);
-A
+if (isset($_POST['reset_basic'])) {
+    $text = $basic_text;
+    $find = $basic_find;
+    $replace = $basic_replace;
+    $submitted = false;
+} else {
+    $text = $_POST['text'] ?? $basic_text;
+    $find = $_POST['find'] ?? $basic_find;
+    $replace = $_POST['replace'] ?? $basic_replace;
+    $submitted = isset($_POST['text']);
+}
+
 if ($submitted && $find !== '') {
     $result = findAndReplace($text, $find, $replace);
 }
+
+
+
 
 ob_start();
 ?>
@@ -49,7 +61,15 @@ ob_start();
                 <input type="text" id="replace" name="replace" value="<?= htmlspecialchars($replace) ?>" placeholder="нові символи">
             </div>
         </div>
-        <button type="submit" class="btn-submit">Замінити</button>
+        <div style="display:flex; gap:10px;">
+    <button type="submit" class="btn-submit">
+        Замінити
+    </button>
+
+    <button type="submit" name="reset_basic" value="1">
+        Базові значення
+    </button>
+</div>
     </form>
 
     <?php if ($submitted && $find !== ''): ?>
