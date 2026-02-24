@@ -17,7 +17,7 @@ $tasks = [
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Демо — ЛР3</title>
+    <title>Виконані завдання ЛР3</title>
     <link rel="stylesheet" href="demo.css">
 </head>
 <body class="index-page">

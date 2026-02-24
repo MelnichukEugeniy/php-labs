@@ -34,4 +34,16 @@ class Users
         $this->surname = $surname;
         $this->age = $age;
     }
+
+
+    public function __clone(): void
+{
+    $this->name = 'User';
+    $this->nickname = 'User_' . uniqid();
+    $this->surname = '';
+    $this->age = 0;
+    $this->email = 'user' . rand(1000, 9999) . '@example.com';
+    $this->password = 'qwerty';
+}
+
 }
