@@ -4,7 +4,7 @@
  *
  * Демонстрація: клас Users, створення 3 об'єктів з довільними значеннями
  */
-
+use LR3\V13\Users;
 require_once __DIR__ . '/layout.php';
 require_once __DIR__ . '/Users.php';
 
