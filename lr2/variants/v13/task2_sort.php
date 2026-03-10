@@ -4,7 +4,7 @@
  *
  * Демонстрація: робота з рядками, explode, sort, implode
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 /**
  * Сортує міста в алфавітному порядку
@@ -110,4 +110,4 @@ ob_start();
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Рядки: Сортування');
+renderVariantLayout($content, 'Рядки: Сортування');

@@ -5,7 +5,7 @@
  * createArray(): випадковий масив (4-8, значення 1-50)
  * Операція: об'єднати → видалити дублікати → сортувати за спаданням
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 //Створює масив випадкової довжини (4-8) з випадковими значеннями (1-50)
@@ -119,4 +119,4 @@ mergeUniqueSortedDesc($a, $b);
 
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Масиви: Операції');
+renderVariantLayout($content, 'Масиви: Операції');

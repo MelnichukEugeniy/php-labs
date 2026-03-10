@@ -4,7 +4,7 @@
  *
  * Генерація імен із заданих складів
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 function generateAnimalName(array $syllables, int $syllablesPerName = 2): string
@@ -90,4 +90,4 @@ generateNames(["рон","ка","ві","бу","зен","мі","тай","лу","п
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Масиви: Генератор імен');
+renderVariantLayout($content, 'Масиви: Генератор імен');

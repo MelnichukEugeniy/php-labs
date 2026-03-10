@@ -4,7 +4,7 @@
  *
  * Демонстрація: робота з рядками, str_replace
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 
@@ -87,4 +87,4 @@ ob_start();
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Рядки: Заміна');
+renderVariantLayout($content, 'Рядки: Заміна');

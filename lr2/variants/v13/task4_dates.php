@@ -5,7 +5,7 @@
  * Обчислення кількості днів між двома датами у форматі ДД-ММ-РРРР
  */
 
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 function isValidDate(string $date): bool {
@@ -103,4 +103,4 @@ dateDifference("<?= $date1 ?>", "<?= $date2 ?>") → <?= $days ?>
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, "Рядки: Різниця дат");
+renderVariantLayout($content, "Рядки: Різниця дат");

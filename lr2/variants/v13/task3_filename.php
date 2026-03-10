@@ -5,7 +5,7 @@
  * Виділення директорії, імені файлу без розширення та розширення
  */
 
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 function normalizePath(string $path): string {
@@ -85,4 +85,4 @@ extractExtension("<?= $path ?>") → "<?= $extension ?>"
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, "Рядки: Ім'я файлу");
+renderVariantLayout($content, "Рядки: Ім'я файлу");

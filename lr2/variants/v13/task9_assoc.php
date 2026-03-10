@@ -5,7 +5,7 @@
  * Демонстрація: ключі — імена студентів, значення — оцінки (1-12)
  * Сортування за іменем або за оцінкою
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 //Сортує асоціативний масив за іменами (ключами)
@@ -93,4 +93,4 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Масиви: Асоціативний');
+renderVariantLayout($content, 'Масиви: Асоціативний');

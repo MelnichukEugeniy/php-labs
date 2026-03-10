@@ -6,7 +6,7 @@
  * вибір мови через GET + cookie, завантаження фото
  */
 session_start();
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 // --- Мова ---
 $languages = [
@@ -231,4 +231,4 @@ ob_start();
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Форма: Реєстрація');
+renderVariantLayout($content, 'Форма: Реєстрація');

@@ -5,7 +5,7 @@
  * Генерація пароля та перевірка складності (0–5 балів)
  */
 
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 function generatePassword(int $length = 17): string {
@@ -109,4 +109,4 @@ checkPasswordStrength("<?= htmlspecialchars($password) ?>") → <?= $result['sco
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, "Рядки: Генератор паролів");
+renderVariantLayout($content, "Рядки: Генератор паролів");

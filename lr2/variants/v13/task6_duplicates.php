@@ -4,7 +4,7 @@
  *
  * Демонстрація: знаходження елементів, які зустрічаються лише 1 раз
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 
 function findUniqueElements(array $arr): array
@@ -68,4 +68,4 @@ findUniqueElements([<?= htmlspecialchars(implode(', ', $arr)) ?>])
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Масиви: Унікальні елементи');
+renderVariantLayout($content, 'Масиви: Унікальні елементи');

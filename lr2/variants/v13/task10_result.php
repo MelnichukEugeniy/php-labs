@@ -3,7 +3,7 @@
  * Завдання 10: Результат реєстрації
  */
 session_start();
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 $hobbiesMap = [
     'sport' => 'Спорт',
@@ -82,4 +82,4 @@ ob_start();
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Форма: Результат');
+renderVariantLayout($content, 'Форма: Результат');

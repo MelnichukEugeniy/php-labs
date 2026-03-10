@@ -2,7 +2,7 @@
 /**
  * Завдання 11: Калькулятор — форма введення
  */
-require_once __DIR__ . '/demo/layout.php';
+require_once __DIR__ . '/layout.php';
 
 $xDefault = 1.5;
 $yDefault = 3;
@@ -49,4 +49,4 @@ ob_start();
 </div>
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Функції: Калькулятор');
+renderVariantLayout($content, 'Функції: Калькулятор');
