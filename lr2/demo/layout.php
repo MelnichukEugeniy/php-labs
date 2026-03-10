@@ -49,7 +49,7 @@ function renderDemoLayout(string $content, string $taskName, string $bodyClass =
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($taskName) ?> — Демо ЛР2</title>
-    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="demo/demo.css">
 </head>
 
 <body class="body-with-header <?= htmlspecialchars($bodyClass) ?>">

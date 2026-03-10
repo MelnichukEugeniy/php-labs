@@ -23,7 +23,7 @@ $find = $_POST['find'] ?? '';
 $replace = $_POST['replace'] ?? '';
 $result = '';
 $submitted = isset($_POST['text']);
-A
+
 if ($submitted && $find !== '') {
     $result = findAndReplace($text, $find, $replace);
 }

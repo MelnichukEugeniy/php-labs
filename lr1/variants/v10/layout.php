@@ -19,7 +19,7 @@ function renderVariantLayout(string $content, string $taskName, string $bodyClas
         'task7_squares.php' => 'Завдання 6.2',
     ];
 
-    $demoUrl = "/lr1/demo/{$currentTask}?from=v30";
+    $demoUrl = "/lr1/demo/{$currentTask}?from=v10";
     ?>
 <!DOCTYPE html>
 <html lang="uk">

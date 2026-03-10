@@ -45,11 +45,11 @@ $squares = generateGrowingSquares($n);
     <header class="header-fixed">
         <div class="header-left">
             <a href="/" class="header-btn">Головна</a>
-            <a href="index.php" class="header-btn">← Варіант 30</a>
-            <a href="/lr1/demo/task7_squares.php?from=v30" class="header-btn header-btn-demo">Demo</a>
+            <a href="index.php" class="header-btn">← Варіант 10</a>
+            <a href="/lr1/demo/task7_squares.php?from=v10" class="header-btn header-btn-demo">Demo</a>
         </div>
         <div class="header-center"></div>
-        <div class="header-right">В-30 / Завд. 6.2</div>
+        <div class="header-right">В-10 / Завд. 6.2</div>
     </header>
 
     <?= $squares ?>
