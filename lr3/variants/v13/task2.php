@@ -146,4 +146,4 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Завдання 2', 'task2-body');
+renderVariantLayout($content, 'Завдання 2', 'task2-body');

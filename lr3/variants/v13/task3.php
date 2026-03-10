@@ -118,4 +118,4 @@ $user3 = new Users('Денис','denys@gmail.com','denys','myP@ss789','Плот�
 
 <?php
 $content = ob_get_clean();
-renderDemoLayout($content, 'Завдання 3', 'task3-body');
+renderVariantLayout($content, 'Завдання 3', 'task3-body');
