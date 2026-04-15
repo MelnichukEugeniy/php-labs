@@ -25,8 +25,10 @@ CREATE TABLE IF NOT EXISTS motorcycles (
     description TEXT DEFAULT '',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+INSERT INTO users (login, password, email, first_name, last_name, phone, city, gender, about) VALUES
+    ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@motorcycle-shop.com', 'Адміністратор', 'Магазину', '+380501234567', 'Київ', 'male', 'Адміністратор магазину мотоциклів'),
+    ('mechanic', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'mechanic@motorcycle-shop.com', 'Механік', 'Професійний', '+380507654321', 'Львів', 'male', 'Професійний механік з 10-річним досвідом');
 
--- Seed motorcycles
 INSERT INTO motorcycles (model, brand, category, price, engine_cc, power_hp, description) VALUES
     ('CBR1000RR-R', 'Honda', 'Спортивні', 950000, 999, 215, 'Високопродуктивний спортбайк з передовою аеродинамікою та потужним двигуном.'),
     ('S1000RR', 'BMW', 'Спортивні', 1100000, 999, 207, 'Легендарний спортбайк з вражаючою потугою та керованістю.'),
