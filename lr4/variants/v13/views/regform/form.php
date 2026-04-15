@@ -3,8 +3,8 @@ $errors = $errors ?? [];
 $old = $old ?? [];
 ?>
 
-<h1>Реєстрація на кулінарному блозі</h1>
-<p>Створіть акаунт, щоб зберігати рецепти та залишати коментарі.</p>
+<h1>Реєстрація в інтернет-магазині мотоциклів</h1>
+<p>Створіть акаунт, щоб зберігати улюблені моделі та оформлювати замовлення.</p>
 
 <?php if (!empty($errors)): ?>
     <div class="alert alert--error">
@@ -54,7 +54,7 @@ $old = $old ?? [];
     <div class="form__group">
         <label for="about" class="form__label">Про себе (необов'язково)</label>
         <textarea id="about" name="about" class="form__textarea" rows="4"
-                  placeholder="Ваш кулінарний досвід, улюблені страви, рівень майстерності..."><?= htmlspecialchars($old['about'] ?? '') ?></textarea>
+                  placeholder="Ваші улюблені моделі мотоциклів, досвід водіння, побажання..."><?= htmlspecialchars($old['about'] ?? '') ?></textarea>
     </div>
 
     <div class="form__actions">
