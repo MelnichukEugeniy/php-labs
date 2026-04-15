@@ -35,12 +35,26 @@ class Application
     private function initDatabase(): void
     {
         $dbPath = ROOT_DIR . '/database/app.db';
-        if (!file_exists($dbPath)) {
-            $schemaPath = ROOT_DIR . '/database/schema.sql';
-            if (file_exists($schemaPath)) {
-                $db = Database::getInstance();
-                $db->exec(file_get_contents($schemaPath));
-            }
+        $schemaPath = ROOT_DIR . '/database/schema.sql';
+
+        if (!file_exists($schemaPath)) {
+            return;
+        }
+
+        if (!file_exists($dbPath) || $this->isSchemaMissing()) {
+            $db = Database::getInstance();
+            $db->exec(file_get_contents($schemaPath));
+        }
+    }
+
+    private function isSchemaMissing(): bool
+    {
+        try {
+            $db = Database::getInstance();
+            $stmt = $db->query("SELECT name FROM sqlite_master WHERE type='table' AND name='motorcycles'");
+            return $stmt->fetch() === false;
+        } catch (PDOException $e) {
+            return true;
         }
     }
 
