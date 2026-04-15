@@ -3,7 +3,7 @@ $message = $message ?? '';
 $error = $error ?? '';
 ?>
 
-<h1>Видалення каталогу</h1>
+<h1>Видалення кабінету</h1>
 <p>Введіть логін та пароль — папку <code>data/users/{логін}/</code> буде видалено з усім вмістом.</p>
 
 <?php if ($message !== ''): ?>
@@ -30,7 +30,7 @@ $error = $error ?? '';
     </div>
 
     <div class="form__actions">
-        <button type="submit" class="btn btn--danger">Видалити каталог</button>
+        <button type="submit" class="btn btn--danger">Видалити кабінет</button>
         <a href="index.php?route=folder/create" class="btn btn--secondary">Назад до створення</a>
     </div>
 </form>

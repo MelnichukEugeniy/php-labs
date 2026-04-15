@@ -35,21 +35,21 @@ class FolderController extends PageController
                 } else {
                     mkdir($userDir, 0755, true);
 
-                    $subfolders = ['video', 'music', 'photo'];
+                    $subfolders = ['проекти', 'послуги', 'запчастини'];
                     foreach ($subfolders as $sub) {
                         $subPath = $userDir . '/' . $sub;
                         mkdir($subPath, 0755, true);
 
                         // Create sample files
-                        file_put_contents($subPath . '/readme.txt', "Папка {$sub} користувача {$login}\nСтворено: " . date('Y-m-d H:i'));
-                        file_put_contents($subPath . '/example_1.txt', "Приклад файлу 1 в {$sub}");
-                        file_put_contents($subPath . '/example_2.txt', "Приклад файлу 2 в {$sub}");
+                        file_put_contents($subPath . '/readme.txt', "Папка '{$sub}' користувача {$login}\nСтворено: " . date('Y-m-d H:i'));
+                        file_put_contents($subPath . '/example_1.txt', "Приклад запису 1 в {$sub}");
+                        file_put_contents($subPath . '/example_2.txt', "Приклад запису 2 в {$sub}");
                     }
 
                     // Save password hash
                     file_put_contents($userDir . '/.password', password_hash($password, PASSWORD_DEFAULT));
 
-                    $message = "Папку \"{$login}\" створено з підпапками video, music, photo!";
+                    $message = "Папку \"{$login}\" створено з підпапками проекти, послуги, запчастини!";
                 }
             }
         }

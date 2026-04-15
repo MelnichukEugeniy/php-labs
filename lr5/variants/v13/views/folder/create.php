@@ -4,8 +4,8 @@ $error = $error ?? '';
 $folders = $folders ?? [];
 ?>
 
-<h1>Створення каталогу</h1>
-<p>Введіть логін — буде створено папку <code>data/users/{логін}/</code> з підпапками <code>video</code>, <code>music</code>, <code>photo</code>.</p>
+<h1>Кабінет механіка</h1>
+<p>Введіть Логін — буде створено папку <code>data/users/{Логін}/</code> з підпапками <code>проекти</code>, <code>послуги</code>, <code>запчастини</code>.</p>
 
 <?php if ($message !== ''): ?>
     <div class="alert alert--success"><?= htmlspecialchars($message) ?></div>
@@ -31,13 +31,13 @@ $folders = $folders ?? [];
     </div>
 
     <div class="form__actions">
-        <button type="submit" class="btn">Створити каталог</button>
+        <button type="submit" class="btn">Створити кабінет</button>
         <a href="index.php?route=folder/delete" class="btn btn--secondary">Видалити каталог</a>
     </div>
 </form>
 
 <?php if (!empty($folders)): ?>
-    <h2>Існуючі каталоги</h2>
+    <h2>Мої кабінети</h2>
     <table class="table">
         <thead>
             <tr>
