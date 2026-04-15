@@ -4,8 +4,8 @@ $message = $message ?? '';
 $errors = $errors ?? [];
 ?>
 
-<h1>Гостьова книга</h1>
-<p>Коментарі зберігаються у файлі <code>data/comments.jsonl</code> (формат: JSON Lines).</p>
+<h1>Коментарі клієнтів</h1>
+<p>Поділіться своїм досвідом та відгуком про мотоцикли. Коментарі зберігаються у файлі <code>data/comments.jsonl</code> (формат: JSON Lines).</p>
 
 <?php if ($message !== ''): ?>
     <div class="alert alert--success"><?= htmlspecialchars($message) ?></div>
@@ -24,9 +24,9 @@ $errors = $errors ?? [];
     </div>
 
     <div class="form__group <?= isset($errors['comment']) ? 'form__group--error' : '' ?>">
-        <label for="gb_comment" class="form__label">Коментар <span class="required">*</span></label>
+        <label for="gb_comment" class="form__label">Ваш відгук <span class="required">*</span></label>
         <textarea id="gb_comment" name="comment" class="form__textarea"
-                  placeholder="Ваш коментар..."><?= htmlspecialchars($_POST['comment'] ?? '') ?></textarea>
+                  placeholder="Розповідь про досвід з мотоциклом..."><?= htmlspecialchars($_POST['comment'] ?? '') ?></textarea>
         <?php if (isset($errors['comment'])): ?>
             <span class="form__error"><?= htmlspecialchars($errors['comment']) ?></span>
         <?php endif; ?>

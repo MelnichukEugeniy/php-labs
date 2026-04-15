@@ -45,7 +45,7 @@ class GuestbookController extends PageController
             'comments' => $comments,
             'message' => $message,
             'errors' => $errors,
-        ], 'Гостьова книга');
+        ], 'Коментарі клієнтів');
     }
 
     private function readComments(): array
