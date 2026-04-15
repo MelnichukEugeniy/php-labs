@@ -57,7 +57,7 @@ class UploadController extends PageController
             'images' => $images,
             'message' => $message,
             'error' => $error,
-        ], 'Завантаження зображень');
+        ], 'Галерея мотоциклів');
     }
 
     private function getImages(): array

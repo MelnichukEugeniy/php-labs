@@ -4,8 +4,8 @@ $message = $message ?? '';
 $error = $error ?? '';
 ?>
 
-<h1>Завантаження зображень</h1>
-<p>Завантажте зображення (JPEG, PNG, GIF, WebP, до 5 МБ). Файли зберігаються у <code>data/uploads/</code>.</p>
+<h1>Галерея мотоциклів</h1>
+<p>Завантажте фото мотоциклів та деталей (JPEG, PNG, GIF, WebP, до 5 МБ). Файли зберігаються у <code>data/uploads/</code>.</p>
 
 <?php if ($message !== ''): ?>
     <div class="alert alert--success"><?= htmlspecialchars($message) ?></div>
@@ -17,7 +17,7 @@ $error = $error ?? '';
 
 <form method="POST" action="index.php?route=upload/index" enctype="multipart/form-data" class="form">
     <div class="form__group">
-        <label for="upload_image" class="form__label">Оберіть зображення <span class="required">*</span></label>
+        <label for="upload_image" class="form__label">Оберіть фото <span class="required">*</span></label>
         <input type="file" id="upload_image" name="image" class="form__input" accept="image/*">
     </div>
 
@@ -26,10 +26,10 @@ $error = $error ?? '';
     </div>
 </form>
 
-<h2>Галерея (<?= count($images) ?>)</h2>
+<h2>Фото в галереї (<?= count($images) ?>)</h2>
 
 <?php if (empty($images)): ?>
-    <p class="text-muted">Зображень ще немає.</p>
+    <p class="text-muted">Фото ще не завантажені.</p>
 <?php else: ?>
     <div class="gallery">
         <?php foreach ($images as $img): ?>
