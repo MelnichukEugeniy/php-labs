@@ -2,7 +2,8 @@
 $user = $user ?? [];
 ?>
 
-<h1>Профіль: <?= htmlspecialchars($user['login'] ?? '') ?></h1>
+<h1>Профіль клієнта: <?= htmlspecialchars($user['login'] ?? '') ?></h1>
+<p class="text-muted">Ваші персональні дані для замовлень, сервісу та покупок у магазині мотоциклів.</p>
 
 <div class="profile">
     <table class="table">

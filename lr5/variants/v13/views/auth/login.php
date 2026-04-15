@@ -2,7 +2,8 @@
 $error = $error ?? '';
 ?>
 
-<h1>Вхід</h1>
+<h1>Вхід до магазину мотоциклів</h1>
+<p class="text-muted">Увійдіть, щоб керувати каталогом мотоциклів, залишати коментарі та переглядати профіль.</p>
 
 <?php if ($error !== ''): ?>
     <div class="alert alert--error"><?= htmlspecialchars($error) ?></div>
