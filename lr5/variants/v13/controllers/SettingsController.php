@@ -3,80 +3,67 @@
 class SettingsController extends PageController
 {
     private array $availableColors = [
-        '#FFF8E1' => 'Ваніль',
-        '#E8F5E9' => 'М\'ятний',
-        '#FFCDD2' => 'Полуничний',
-        '#BBDEFB' => 'Чорничний',
-        '#E1BEE7' => 'Лавандовий',
-        '#C8E6C9' => 'Базилік',
-        '#FFAB91' => 'Гарбузовий',
-        '#B2EBF2' => 'Крижаний',
-        '#F0F4C3' => 'Лимонний',
-        '#D7CCC8' => 'Какао',
-        '#CFD8DC' => 'Сталевий',
-        '#FFFFFF' => 'Білий',
+        '#f9fafb' => 'Стандартний (світло-сірий)',
+        '#dbeafe' => 'Блакитний',
+        '#dcfce7' => 'Зелений',
+        '#fef9c3' => 'Жовтий',
+        '#fce7f3' => 'Рожевий',
+        '#f3e8ff' => 'Фіолетовий',
+        '#ffedd5' => 'Помаранчевий',
+        '#ffffff' => 'Білий',
     ];
 
     public function action_color(): void
     {
         $message = '';
-        $messageType = 'success';
+        $error = '';
 
         if ($this->request->isPost()) {
-            $color = $this->request->postString('bg_color', '#FFF8E1');
+            $color = $this->request->post('bg_color', '#f9fafb');
 
             if (array_key_exists($color, $this->availableColors)) {
                 $_SESSION['bg_color'] = $color;
                 $message = 'Колір фону збережено!';
             } else {
-                $message = 'Невідомий колір.';
-                $messageType = 'error';
+                $error = 'Невідомий колір.';
             }
         }
 
         $this->render('settings/color', [
             'colors' => $this->availableColors,
-            'currentColor' => $_SESSION['bg_color'] ?? '#FFF8E1',
+            'currentColor' => $_SESSION['bg_color'] ?? '#f9fafb',
             'message' => $message,
-            'messageType' => $messageType,
+            'error' => $error,
         ], 'Колір фону');
     }
 
     public function action_greeting(): void
     {
         $message = '';
-        $messageType = 'success';
+        $error = '';
 
         if ($this->request->isPost()) {
-            $name = trim($this->request->postString('greeting_name'));
-            $gender = $this->request->postString('greeting_gender');
+            $name = trim($this->request->post('greeting_name', ''));
+            $gender = $this->request->post('greeting_gender', '');
 
             if ($name === '') {
-                $message = "Ім'я не може бути порожнім.";
-                $messageType = 'error';
+                $error = "Ім'я не може бути порожнім.";
             } elseif (!in_array($gender, ['male', 'female'], true)) {
-                $message = 'Оберіть стать.';
-                $messageType = 'error';
+                $error = 'Оберіть стать.';
             } else {
-                $cookieOptions = [
-                    'expires' => time() + 30 * 24 * 3600,
-                    'path' => '/',
-                    'httponly' => true,
-                    'samesite' => 'Lax',
-                ];
-                setcookie('greeting_name', $name, $cookieOptions);
-                setcookie('greeting_gender', $gender, $cookieOptions);
+                setcookie('greeting_name', $name, time() + 30 * 24 * 3600, '/');
+                setcookie('greeting_gender', $gender, time() + 30 * 24 * 3600, '/');
 
                 $_COOKIE['greeting_name'] = $name;
                 $_COOKIE['greeting_gender'] = $gender;
 
-                $message = 'Привітання збережено!';
+                $message = 'Привітання збережено в cookie!';
             }
         }
 
         $this->render('settings/greeting', [
             'message' => $message,
-            'messageType' => $messageType,
+            'error' => $error,
             'currentName' => $_COOKIE['greeting_name'] ?? '',
             'currentGender' => $_COOKIE['greeting_gender'] ?? '',
         ], 'Привітання (Cookie)');

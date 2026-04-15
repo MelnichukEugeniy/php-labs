@@ -7,6 +7,7 @@ class Application
     public function __construct()
     {
         $this->router = new Router();
+        $this->initDatabase();
     }
 
     public function run(): void
@@ -29,6 +30,18 @@ class Application
         }
 
         $controller->$actionName();
+    }
+
+    private function initDatabase(): void
+    {
+        $dbPath = ROOT_DIR . '/database/app.db';
+        if (!file_exists($dbPath)) {
+            $schemaPath = ROOT_DIR . '/database/schema.sql';
+            if (file_exists($schemaPath)) {
+                $db = Database::getInstance();
+                $db->exec(file_get_contents($schemaPath));
+            }
+        }
     }
 
     private function show404(string $message): void

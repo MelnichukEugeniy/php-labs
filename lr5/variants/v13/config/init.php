@@ -1,11 +1,12 @@
 <?php
 
-session_start();
+session_start(['cookie_httponly' => true, 'cookie_samesite' => 'Lax']);
 
 define('ROOT_DIR', dirname(__DIR__));
 define('CLASSES_DIR', ROOT_DIR . '/classes');
 define('CONTROLLERS_DIR', ROOT_DIR . '/controllers');
 define('VIEWS_DIR', ROOT_DIR . '/views');
+define('DATA_DIR', ROOT_DIR . '/data');
 
 spl_autoload_register(function (string $className): void {
     $paths = [

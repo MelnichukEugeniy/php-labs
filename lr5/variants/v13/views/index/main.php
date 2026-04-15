@@ -1,60 +1,47 @@
 <div class="page-home">
-    <h1>Магазин мотоциклів</h1>
-    <p class="page-home__subtitle">Ласкаво просимо до нашого магазину мотоциклів! Тут ви знайдете сучасні байки, аксесуари та все для справжніх поціновувачів швидкості.</p>
+    <h1>Кулінарний блог</h1>
+    <p class="page-home__subtitle">Варіант 30 &mdash; Лабораторна робота №5</p>
+    <p class="text-muted">Збірка українських рецептів. Файлова гостьова книга, галерея фото страв, CRUD рецептів через PDO, авторизація.</p>
 
+    <h2>Файли</h2>
     <div class="card-grid">
         <div class="card">
-            <h3 class="card__title">Популярні моделі</h3>
-            <p class="card__text">
-                Спортивні, туристичні, кросові та міські мотоцикли —
-                найкращі моделі з описом характеристик та фото.
-            </p>
+            <h3 class="card__title">Гостьова книга</h3>
+            <p class="card__text">Залишайте відгуки про рецепти. Коментарі зберігаються у текстовому файлі.</p>
+            <a href="index.php?route=guestbook/index" class="btn btn--small">Відгуки</a>
         </div>
 
         <div class="card">
-            <h3 class="card__title">Реєстрація</h3>
-            <p class="card__text">
-                Зареєструйтесь, щоб зберігати улюблені моделі,
-                залишати відгуки та оформлювати замовлення.
-            </p>
-            <a href="index.php?route=regform/form" class="btn btn--small">Зареєструватися</a>
+            <h3 class="card__title">Фото страв</h3>
+            <p class="card__text">Завантажуйте фото приготовлених страв. Галерея кулінарних шедеврів.</p>
+            <a href="index.php?route=upload/index" class="btn btn--small">Галерея</a>
         </div>
 
         <div class="card">
-            <h3 class="card__title">Параметри запиту</h3>
-            <p class="card__text">
-                Технічна сторінка для перегляду GET та POST параметрів запиту.
-            </p>
-            <a href="index.php?route=reqview/showrequest" class="btn btn--small">Перейти</a>
+            <h3 class="card__title">Каталоги кухарів</h3>
+            <p class="card__text">Персональні папки для кухарів з колекціями відео, музики та фото.</p>
+            <a href="index.php?route=folder/create" class="btn btn--small">Каталоги</a>
+        </div>
+    </div>
+
+    <h2>База даних</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3 class="card__title">Рецепти (CRUD)</h3>
+            <p class="card__text">Колекція рецептів з інгредієнтами, часом приготування та інструкціями. PDO + SQLite.</p>
+            <a href="index.php?route=recipe/list" class="btn btn--small">До рецептів</a>
+        </div>
+
+        <div class="card">
+            <h3 class="card__title">Акаунт кухаря</h3>
+            <p class="card__text">Реєстрація, вхід, профіль. Хешування паролів, сесійна авторизація.</p>
+            <a href="index.php?route=auth/login" class="btn btn--small">Увійти</a>
         </div>
 
         <div class="card">
             <h3 class="card__title">Налаштування</h3>
-            <p class="card__text">
-                Оберіть колір фону сайту та налаштуйте персональне привітання.
-            </p>
-            <a href="index.php?route=settings/color" class="btn btn--small">Налаштувати</a>
+            <p class="card__text">Колір фону (сесія) та привітання (cookie). Успадковано з ЛР4.</p>
+            <a href="index.php?route=settings/color" class="btn btn--small">Налаштування</a>
         </div>
-    </div>
-
-    <div class="info-block">
-        <h2>Структура MVC</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Клас</th>
-                    <th>Призначення</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><code>Application</code></td><td>Завантаження додатку, виклик контролера</td></tr>
-                <tr><td><code>Router</code></td><td>Розбір URL &rarr; контролер + дія</td></tr>
-                <tr><td><code>Request</code></td><td>Обгортка для <code>$_GET</code> / <code>$_POST</code></td></tr>
-                <tr><td><code>Controller</code></td><td>Базовий клас контролера</td></tr>
-                <tr><td><code>PageController</code></td><td>Контролер для сторінок</td></tr>
-                <tr><td><code>View</code></td><td>Базовий клас для відображення</td></tr>
-                <tr><td><code>PageView</code></td><td>Шаблон сторінки з layout</td></tr>
-            </tbody>
-        </table>
     </div>
 </div>

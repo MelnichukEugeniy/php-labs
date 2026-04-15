@@ -1,7 +1,7 @@
 <?php
-$bgColor = $_SESSION['bg_color'] ?? '#E3F2FD';
-$greetingName = is_string($_COOKIE['greeting_name'] ?? '') ? ($_COOKIE['greeting_name'] ?? '') : '';
-$greetingGender = is_string($_COOKIE['greeting_gender'] ?? '') ? ($_COOKIE['greeting_gender'] ?? '') : '';
+$bgColor = $_SESSION['bg_color'] ?? '#f9fafb';
+$greetingName = $_COOKIE['greeting_name'] ?? '';
+$greetingGender = $_COOKIE['greeting_gender'] ?? '';
 
 $greetingText = '';
 if ($greetingName !== '') {
@@ -9,14 +9,18 @@ if ($greetingName !== '') {
     $greetingText = "Вітаємо Вас, {$title} " . htmlspecialchars($greetingName) . "!";
 }
 
+$isLoggedIn = isset($_SESSION['user_id']);
+$userLogin = $_SESSION['user_login'] ?? '';
+
 $currentRoute = $_GET['route'] ?? 'index/main';
 
 $navItems = [
     'index/main' => 'Головна',
-    'regform/form' => 'Реєстрація',
-    'reqview/showrequest' => 'Параметри запиту',
-    'settings/color' => 'Колір фону',
-    'settings/greeting' => 'Привітання',
+    'guestbook/index' => 'Гостьова книга',
+    'upload/index' => 'Завантаження',
+    'folder/create' => 'Каталоги',
+    'recipe/list' => 'Рецепти',
+    'settings/color' => 'Налаштування',
 ];
 ?>
 <!DOCTYPE html>
@@ -24,17 +28,29 @@ $navItems = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars(($pageTitle ?? '') !== '' ? $pageTitle : 'Магазин мотоциклів') ?> — Магазин мотоциклів</title>
+    <title><?= htmlspecialchars($pageTitle ?? 'Кулінарний блог') ?> — Кулінарний блог (v30)</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-color: <?= htmlspecialchars($bgColor) ?>">
+    <a href="#main-content" class="skip-link">Перейти до вмісту</a>
     <header class="header">
         <div class="container">
             <div class="header__inner">
-                <a href="index.php" class="header__logo">Магазин мотоциклів</a>
-                <?php if ($greetingText !== ''): ?>
-                    <span class="header__greeting"><?= $greetingText ?></span>
-                <?php endif; ?>
+                <a href="index.php" class="header__logo">Кулінарний блог</a>
+                <div class="header__right">
+                    <?php if ($greetingText !== ''): ?>
+                        <span class="header__greeting"><?= $greetingText ?></span>
+                    <?php endif; ?>
+                    <div class="header__auth">
+                        <?php if ($isLoggedIn): ?>
+                            <a href="index.php?route=auth/profile" class="header__auth-link"><?= htmlspecialchars($userLogin) ?></a>
+                            <a href="index.php?route=auth/logout" class="header__auth-link header__auth-link--logout">Вийти</a>
+                        <?php else: ?>
+                            <a href="index.php?route=auth/login" class="header__auth-link">Увійти</a>
+                            <a href="index.php?route=auth/register" class="header__auth-link">Реєстрація</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
             <nav class="nav">
                 <ul class="nav__list">
@@ -50,5 +66,12 @@ $navItems = [
             </nav>
         </div>
     </header>
-    <main class="main">
+    <main class="main" id="main-content">
         <div class="container">
+            <?php
+            if (!empty($_SESSION['flash_success'])):
+                $flash = $_SESSION['flash_success'];
+                unset($_SESSION['flash_success']);
+            ?>
+                <div class="alert alert--success" role="alert"><?= htmlspecialchars($flash) ?></div>
+            <?php endif; ?>
