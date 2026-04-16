@@ -28,7 +28,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+            'age' => 'nullable|integer|min:0',
+            'role' => 'nullable|string|max:50',
+            'phone' => 'nullable|string|max:50',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+        \App\Models\User::create($validated);
+        return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
 
     /**
